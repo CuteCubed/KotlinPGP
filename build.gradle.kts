@@ -8,6 +8,7 @@ buildscript {
 
 plugins {
     kotlin("jvm") version "1.3.21"
+    id 'maven-publish'
 }
 
 repositories {
@@ -29,4 +30,17 @@ tasks.withType<KotlinCompile> {
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform { }
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/CuteCubed/KotlinPGP"
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
+        }
+    }
 }
