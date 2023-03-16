@@ -1,7 +1,8 @@
-[![Build Status](https://travis-ci.com/Tlaster/KotlinPGP.svg?branch=master)](https://travis-ci.com/Tlaster/KotlinPGP)
-[ ![Download](https://api.bintray.com/packages/tlaster/KotlinPGP/KotlinPGP/images/download.svg) ](https://bintray.com/tlaster/KotlinPGP/KotlinPGP/_latestVersion)
-
 Kotlin library for OpenPGP using bouncycastle
+# First comments:
+This is the repository for KotlinPGP, a Kotlin library for OpenPGP using bouncycastle. Written by moe.tlaster
+I only added a new build process, as the original one is no longer active and some minor changes to the original code, so all credits go to the original author.
+
 # Getting Start 
 ```
 implementation 'moe.tlaster:kotlinpgp:<latest-version>'

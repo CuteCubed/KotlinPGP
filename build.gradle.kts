@@ -1,31 +1,14 @@
-import com.novoda.gradle.release.PublishExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
         jcenter()
     }
-    dependencies {
-        classpath("com.novoda:bintray-release:0.9")
-    }
-}
-
-apply {
-    plugin("com.novoda.bintray-release")
 }
 
 plugins {
     kotlin("jvm") version "1.3.21"
 }
-
-val siteUrl = "https://github.com/Tlaster/KotlinPGP"
-val gitUrl = "https://github.com/Tlaster/KotlinPGP.git"
-val issueUrl = "https://github.com/Tlaster/KotlinPGP/issues"
-val groupID = "moe.tlaster"
-val artifactID = "kotlinpgp"
-val buildNum = System.getenv("TRAVIS_BUILD_NUMBER") ?: 0
-group = groupID
-version = "1.0.$buildNum"
 
 repositories {
     mavenCentral()
@@ -46,22 +29,4 @@ tasks.withType<KotlinCompile> {
 
 val test by tasks.getting(Test::class) {
     useJUnitPlatform { }
-}
-
-
-val user = System.getenv("BINTRAY_USERNAME")
-val key = System.getenv("BINTRAY_KEY")
-
-configure<PublishExtension> {
-    userOrg = "tlaster"
-    repoName = "KotlinPGP"
-    groupId = "moe.tlaster"
-    artifactId = "kotlinpgp"
-    uploadName = "KotlinPGP"
-    publishVersion = version.toString()
-    desc = "Kotlin PGP"
-    bintrayUser = user
-    bintrayKey = key
-    website = "https://github.com/Tlaster/KotlinPGP"
-    dryRun = false
 }
