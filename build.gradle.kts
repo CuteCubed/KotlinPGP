@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -11,6 +11,9 @@ plugins {
     `maven-publish`
 
 }
+group = "net.cutecubed"
+version = "0.1"
+
 
 
 publishing {
@@ -22,6 +25,11 @@ publishing {
                 username = System.getenv("USERNAME")
                 password = System.getenv("TOKEN")
             }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
         }
     }
 }
